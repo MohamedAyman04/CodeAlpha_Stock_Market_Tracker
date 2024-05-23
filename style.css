@@ -1,0 +1,83 @@
+:root {
+  --BalckColor: #070f2b;
+  --lightViolet: #1b1a55;
+  --aBitLighter: #535c91;
+  --lightViolet: #9290c3;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--BalckColor);
+}
+
+body main {
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+body main h1 {
+  color: var(--lightViolet);
+  font-size: 100px;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+body main form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+body main select,
+button {
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  color: #fff;
+  background-color: var(--aBitLighter);
+}
+
+body main select {
+  width: 200px;
+}
+
+body main .paraghraph {
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px var(--lightViolet);
+  }
+  to {
+    text-shadow: 0 0 30px var(--lightViolet), 0 0 10px var(--lightViolet);
+  }
+}
+
+@media (max-width: 380px) {
+  body main h1 {
+    font-size: 40px;
+  }
+  body main select {
+    width: 150px;
+  }
+}
