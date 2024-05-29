@@ -26,12 +26,12 @@ const daily = async () => {
   const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${selection.value}&apikey=${api_key}`;
   const response = await fetch(url);
   const result = await response.json();
-  const form = date.toISOString().split("T")[0];
+  const form = getYesterdaysDate();
   console.log(result["Time Series (Daily)"]);
   console.log(form);
   paraghraph.innerHTML = "";
   if (result["Time Series (Daily)"] != null) {
-    const day = result["Time Series (Daily)"]["2024-05-24"];
+    const day = result["Time Series (Daily)"][form];
     Object.keys(day).forEach((key) => {
       const item = document.createElement("div");
       item.classList.add("data-item");
@@ -52,6 +52,21 @@ const daily = async () => {
   body.appendChild(main2);
   body.appendChild(main3);
   scroll();
+};
+
+const getYesterdaysDate = () => {
+  // Create a Date object representing today's date
+  let today = new Date();
+
+  // Subtract one day from today's date
+  today.setDate(today.getDate() - 1);
+
+  // Format the date to YYYY-MM-DD
+  let year = today.getFullYear();
+  let month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+  let day = String(today.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
 };
 
 const scroll = () => {

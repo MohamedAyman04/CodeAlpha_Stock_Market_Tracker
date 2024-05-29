@@ -83,7 +83,7 @@ body main select {
 }
 
 .data-item strong {
-  color: #fff;
+  color: var(--BalckColor);
 }
 
 @keyframes glow {
